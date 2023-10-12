@@ -97,9 +97,9 @@ model = dict(
     test_cfg=dict(flip_test=True))
 
 # base dataset settings
-dataset_type = 'CocoDataset'
+dataset_type = 'CustomDataset'
 data_mode = 'topdown'
-data_root = 'data/mydataset_640x360_fixed/'
+data_root = 'data/customdataset_640x360/'
 
 backend_args = dict(backend='local')
 visualizer = dict(vis_backends=[
