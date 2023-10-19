@@ -3,7 +3,7 @@ _base_ = ['/mmpose/configs/_base_/default_runtime.py']
 # runtime
 max_epochs = 60
 stage2_num_epochs = 30
-base_lr = 4e-4
+base_lr = 7e-3
 
 train_cfg = dict(max_epochs=max_epochs, val_interval=10)
 randomness = dict(seed=21)
@@ -35,7 +35,7 @@ param_scheduler = [
 ]
 
 # automatically scaling LR based on the actual training batch size
-auto_scale_lr = dict(base_batch_size=256)
+auto_scale_lr = dict(base_batch_size=32)
 
 # codec settings
 codec = dict(
@@ -181,7 +181,7 @@ train_pipeline_stage2 = [
 
 # data loaders
 train_dataloader = dict(
-    batch_size=64,
+    batch_size=32,
     num_workers=6,
     persistent_workers=True,
     sampler=dict(type='DefaultSampler', shuffle=True),
@@ -194,7 +194,7 @@ train_dataloader = dict(
         pipeline=train_pipeline,
     ))
 val_dataloader = dict(
-    batch_size=32,
+    batch_size=16,
     num_workers=6,
     persistent_workers=True,
     drop_last=False,
