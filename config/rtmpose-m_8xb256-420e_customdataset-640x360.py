@@ -3,7 +3,7 @@ _base_ = ['/mmpose/configs/_base_/default_runtime.py']
 # runtime
 max_epochs = 60
 stage2_num_epochs = 30
-base_lr = 7e-3
+base_lr = 1e-3
 
 train_cfg = dict(max_epochs=max_epochs, val_interval=10)
 randomness = dict(seed=21)
@@ -43,7 +43,7 @@ codec = dict(
     input_size=(192, 256),
     sigma=(4.9, 5.66),
     simcc_split_ratio=2.0,
-    normalize=False,
+    normalize=True,
     use_dark=False)
 
 # model settings
