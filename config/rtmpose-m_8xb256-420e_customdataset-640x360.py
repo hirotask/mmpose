@@ -1,8 +1,8 @@
 _base_ = ['/mmpose/configs/_base_/default_runtime.py']
 
 # runtime
-max_epochs = 30
-stage2_num_epochs = 20
+max_epochs = 50
+stage2_num_epochs = 30
 base_lr = 1e-3
 
 train_cfg = dict(max_epochs=max_epochs, val_interval=10)
