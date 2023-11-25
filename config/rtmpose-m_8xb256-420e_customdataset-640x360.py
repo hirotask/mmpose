@@ -1,7 +1,7 @@
 _base_ = ['/mmpose/configs/_base_/default_runtime.py']
 
 # runtime
-max_epochs = 100
+max_epochs = 50
 stage2_num_epochs = 30
 base_lr = 1e-3
 
@@ -117,54 +117,34 @@ visualizer = dict(vis_backends=[
 train_pipeline = [
     dict(type='LoadImage', backend_args=backend_args),
     dict(type='GetBBoxCenterScale'),
-    dict(type='RandomFlip', direction='horizontal'),
-    dict(type='RandomHalfBody'),
-    dict(
-        type='RandomBBoxTransform', scale_factor=[0.6, 1.4], rotate_factor=80),
+    # dict(type='RandomFlip', direction='horizontal'),
+    # dict(type='RandomHalfBody'),
+    # dict(
+    #     type='RandomBBoxTransform', scale_factor=[0.6, 1.4], rotate_factor=80),
     dict(type='TopdownAffine', input_size=codec['input_size']),
     dict(type='mmdet.YOLOXHSVRandomAug'),
-    dict(
-        type='Albumentation',
-        transforms=[
-            dict(type='Blur', p=0.1),
-            dict(type='MedianBlur', p=0.1),
-            dict(
-                type='CoarseDropout',
-                max_holes=1,
-                max_height=0.4,
-                max_width=0.4,
-                min_holes=1,
-                min_height=0.2,
-                min_width=0.2,
-                p=1.),
-        ]),
+    # dict(
+    #     type='Albumentation',
+    #     transforms=[
+    #         dict(type='Blur', p=0.1),
+    #         dict(type='MedianBlur', p=0.1),
+    #         dict(
+    #             type='CoarseDropout',
+    #             max_holes=1,
+    #             max_height=0.4,
+    #             max_width=0.4,
+    #             min_holes=1,
+    #             min_height=0.2,
+    #             min_width=0.2,
+    #             p=1.),
+    #     ]),
     dict(type='GenerateTarget', encoder=codec),
     dict(type='PackPoseInputs')
 ]
 val_pipeline = [
     dict(type='LoadImage', backend_args=backend_args),
     dict(type='GetBBoxCenterScale'),
-    dict(type='RandomFlip', direction='horizontal'),
-    dict(type='RandomHalfBody'),
-    dict(
-        type='RandomBBoxTransform', scale_factor=[0.6, 1.4], rotate_factor=80),
     dict(type='TopdownAffine', input_size=codec['input_size']),
-    dict(type='mmdet.YOLOXHSVRandomAug'),
-    dict(
-        type='Albumentation',
-        transforms=[
-            dict(type='Blur', p=0.1),
-            dict(type='MedianBlur', p=0.1),
-            dict(
-                type='CoarseDropout',
-                max_holes=1,
-                max_height=0.4,
-                max_width=0.4,
-                min_holes=1,
-                min_height=0.2,
-                min_width=0.2,
-                p=1.),
-        ]),
     dict(type='PackPoseInputs')
 ]
 
