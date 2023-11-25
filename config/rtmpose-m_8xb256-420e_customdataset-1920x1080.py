@@ -99,7 +99,7 @@ model = dict(
 # base dataset settings
 dataset_type = 'CustomDataset'
 data_mode = 'topdown'
-data_root = 'data/customdataset_640x360/'
+data_root = 'data/customdataset_1920x1080/'
 
 backend_args = dict(backend='local')
 visualizer = dict(vis_backends=[
@@ -250,7 +250,9 @@ custom_hooks = [
 ]
 
 # evaluators
-val_evaluator = dict(
-    type='CocoMetric',
-    ann_file=data_root + 'annotations/val_dataset.json')
+val_evaluator = [
+    dict(type='PCKAccuracy', thr=0.2), 
+    dict(type='AUC'), 
+    dict(type='EPE'), 
+]
 test_evaluator = val_evaluator
