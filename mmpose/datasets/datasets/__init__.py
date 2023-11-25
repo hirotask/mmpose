@@ -9,3 +9,4 @@ from .hand import *  # noqa: F401, F403
 from .hand3d import *  # noqa: F401, F403
 from .wholebody import *  # noqa: F401, F403
 from .custom import *
+from .wholebody3d import *  # noqa: F401, F403

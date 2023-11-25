@@ -78,16 +78,11 @@ class Hand3DInferencer(BaseMMPoseInferencer):
                  scope: Optional[str] = 'mmpose',
                  det_model: Optional[Union[ModelType, str]] = None,
                  det_weights: Optional[str] = None,
-                 det_cat_ids: Optional[Union[int, Tuple]] = None,
-                 show_progress: bool = False) -> None:
+                 det_cat_ids: Optional[Union[int, Tuple]] = None) -> None:
 
         init_default_scope(scope)
         super().__init__(
-            model=model,
-            weights=weights,
-            device=device,
-            scope=scope,
-            show_progress=show_progress)
+            model=model, weights=weights, device=device, scope=scope)
         self.model = revert_sync_batchnorm(self.model)
 
         # assign dataset metainfo to self.visualizer

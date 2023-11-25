@@ -86,14 +86,12 @@ class MMPoseInferencer(BaseMMPoseInferencer):
             if 'hand3d' in pose3d:
                 self.inferencer = Hand3DInferencer(pose3d, pose3d_weights,
                                                    device, scope, det_model,
-                                                   det_weights, det_cat_ids,
-                                                   show_progress)
+                                                   det_weights, det_cat_ids)
             else:
                 self.inferencer = Pose3DInferencer(pose3d, pose3d_weights,
                                                    pose2d, pose2d_weights,
                                                    device, scope, det_model,
-                                                   det_weights, det_cat_ids,
-                                                   show_progress)
+                                                   det_weights, det_cat_ids)
         elif pose2d is not None:
             self.inferencer = Pose2DInferencer(pose2d, pose2d_weights, device,
                                                scope, det_model, det_weights,

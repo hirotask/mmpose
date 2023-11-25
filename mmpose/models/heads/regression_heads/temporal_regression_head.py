@@ -135,7 +135,9 @@ class TemporalRegressionHead(BaseHead):
         mpjpe_err = keypoint_mpjpe(
             pred=to_numpy(pred_outputs),
             gt=to_numpy(lifting_target_label),
-            mask=to_numpy(lifting_target_weight) > 0)
+            mask=to_numpy(lifting_target_weight) > 0,
+            thr=0.05,
+            norm_factor=np.ones((pred_outputs.size(0), 3), dtype=np.float32))
 
         mpjpe_pose = torch.tensor(
             mpjpe_err, device=lifting_target_label.device)

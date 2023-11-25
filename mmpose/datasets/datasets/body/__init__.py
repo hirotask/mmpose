@@ -2,7 +2,6 @@
 from .aic_dataset import AicDataset
 from .coco_dataset import CocoDataset
 from .crowdpose_dataset import CrowdPoseDataset
-from .exlpose_dataset import ExlposeDataset
 from .humanart21_dataset import HumanArt21Dataset
 from .humanart_dataset import HumanArtDataset
 from .jhmdb_dataset import JhmdbDataset
@@ -17,5 +16,5 @@ __all__ = [
     'CocoDataset', 'MpiiDataset', 'MpiiTrbDataset', 'AicDataset',
     'CrowdPoseDataset', 'OCHumanDataset', 'MhpDataset', 'PoseTrack18Dataset',
     'JhmdbDataset', 'PoseTrack18VideoDataset', 'HumanArtDataset',
-    'HumanArt21Dataset', 'ExlposeDataset'
+    'HumanArt21Dataset'
 ]
