@@ -98,7 +98,6 @@ model = dict(
 
 # base dataset settings
 dataset_type = 'CustomDataset'
-data_mode = 'topdown'
 data_root = 'data/customdataset_1920x1080/'
 
 backend_args = dict(backend='local')
@@ -208,8 +207,8 @@ train_dataloader = dict(
     dataset=dict(
         type=dataset_type,
         data_root=data_root,
-        data_mode=data_mode,
         ann_file='annotations/train_dataset.json',
+        metainfo=dict(from_file='configs/_base_/datasets/custom_dataset.py'),
         data_prefix=dict(img='train/'),
         pipeline=train_pipeline,
     ))
@@ -222,11 +221,11 @@ val_dataloader = dict(
     dataset=dict(
         type=dataset_type,
         data_root=data_root,
-        data_mode=data_mode,
         ann_file='annotations/val_dataset.json',
         # bbox_file=f'{data_root}person_detection_results/'
         # 'COCO_val2017_detections_AP_H_56_person.json',
         data_prefix=dict(img='val/'),
+        metainfo=dict(from_file='configs/_base_/datasets/custom_dataset.py'),
         test_mode=True,
         pipeline=val_pipeline,
     ))

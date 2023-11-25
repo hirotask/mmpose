@@ -95,7 +95,6 @@ model = dict(
 
 # base dataset settings
 dataset_type = 'CustomDataset'
-data_mode = 'topdown'
 data_root = 'data/customdataset_1920x1080/'
 
 # pipelines
@@ -125,9 +124,9 @@ train_dataloader = dict(
     dataset=dict(
         type=dataset_type,
         data_root=data_root,
-        data_mode=data_mode,
         ann_file='annotations/train_dataset.json',
         data_prefix=dict(img='train/'),
+        metainfo=dict(from_file='configs/_base_/datasets/custom_dataset.py'),
         pipeline=train_pipeline,
     ))
 val_dataloader = dict(
@@ -139,10 +138,10 @@ val_dataloader = dict(
     dataset=dict(
         type=dataset_type,
         data_root=data_root,
-        data_mode=data_mode,
         ann_file='annotations/val_dataset.json',
         # bbox_file='annotations/val_dataset.json',
         data_prefix=dict(img='val/'),
+        metainfo=dict(from_file='configs/_base_/datasets/custom_dataset.py'),
         test_mode=True,
         pipeline=val_pipeline,
     ))
