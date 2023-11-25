@@ -1,9 +1,9 @@
 _base_ = ['/mmpose/configs/_base_/default_runtime.py']
 
 # runtime
-max_epochs = 100
+max_epochs = 200
 stage2_num_epochs = 30
-base_lr = 1e-3
+base_lr = 4e-3
 
 train_cfg = dict(max_epochs=max_epochs, val_interval=10)
 randomness = dict(seed=21)
@@ -250,9 +250,7 @@ custom_hooks = [
 ]
 
 # evaluators
-val_evaluator = [
-    dict(type='PCKAccuracy', thr=0.2), 
-    dict(type='AUC'), 
-    dict(type='EPE'), 
-]
+val_evaluator = dict(
+    type='CocoMetric',
+    ann_file=data_root + 'annotations/val_dataset.json')
 test_evaluator = val_evaluator
