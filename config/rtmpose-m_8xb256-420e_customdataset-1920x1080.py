@@ -218,8 +218,8 @@ val_dataloader = dict(
 test_dataloader = val_dataloader
 
 # hooks
-default_hooks = dict(
-    checkpoint=dict(save_best='coco/AP', rule='greater', max_keep_ckpts=1))
+# default_hooks = dict(
+#     checkpoint=dict(save_best='coco/AP', rule='greater', max_keep_ckpts=1))
 
 custom_hooks = [
     dict(
@@ -235,7 +235,8 @@ custom_hooks = [
 ]
 
 # evaluators
-val_evaluator = dict(
-    type='CocoMetric',
-    ann_file=data_root + 'annotations/val_dataset.json')
+val_evaluator = [
+    dict(type='Accuracy', top_k=(1, 5)),
+    dict(type="AveragePrecision")
+]
 test_evaluator = val_evaluator
