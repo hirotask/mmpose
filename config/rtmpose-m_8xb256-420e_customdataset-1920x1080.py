@@ -123,21 +123,6 @@ train_pipeline = [
         type='RandomBBoxTransform', scale_factor=[0.6, 1.4], rotate_factor=80),
     dict(type='TopdownAffine', input_size=codec['input_size']),
     dict(type='mmdet.YOLOXHSVRandomAug'),
-    dict(
-        type='Albumentation',
-        transforms=[
-            dict(type='Blur', p=0.1),
-            dict(type='MedianBlur', p=0.1),
-            dict(
-                type='CoarseDropout',
-                max_holes=1,
-                max_height=0.4,
-                max_width=0.4,
-                min_holes=1,
-                min_height=0.2,
-                min_width=0.2,
-                p=1.),
-        ]),
     dict(type='GenerateTarget', encoder=codec),
     dict(type='PackPoseInputs')
 ]
@@ -150,21 +135,21 @@ val_pipeline = [
         type='RandomBBoxTransform', scale_factor=[0.6, 1.4], rotate_factor=80),
     dict(type='TopdownAffine', input_size=codec['input_size']),
     dict(type='mmdet.YOLOXHSVRandomAug'),
-    dict(
-        type='Albumentation',
-        transforms=[
-            dict(type='Blur', p=0.1),
-            dict(type='MedianBlur', p=0.1),
-            dict(
-                type='CoarseDropout',
-                max_holes=1,
-                max_height=0.4,
-                max_width=0.4,
-                min_holes=1,
-                min_height=0.2,
-                min_width=0.2,
-                p=1.),
-        ]),
+    # dict(
+    #     type='Albumentation',
+    #     transforms=[
+    #         dict(type='Blur', p=0.1),
+    #         dict(type='MedianBlur', p=0.1),
+    #         dict(
+    #             type='CoarseDropout',
+    #             max_holes=1,
+    #             max_height=0.4,
+    #             max_width=0.4,
+    #             min_holes=1,
+    #             min_height=0.2,
+    #             min_width=0.2,
+    #             p=1.),
+    #     ]),
     dict(type='PackPoseInputs')
 ]
 
@@ -180,21 +165,21 @@ train_pipeline_stage2 = [
         rotate_factor=60),
     dict(type='TopdownAffine', input_size=codec['input_size']),
     dict(type='mmdet.YOLOXHSVRandomAug'),
-    dict(
-        type='Albumentation',
-        transforms=[
-            dict(type='Blur', p=0.1),
-            dict(type='MedianBlur', p=0.1),
-            dict(
-                type='CoarseDropout',
-                max_holes=1,
-                max_height=0.4,
-                max_width=0.4,
-                min_holes=1,
-                min_height=0.2,
-                min_width=0.2,
-                p=0.5),
-        ]),
+    # dict(
+    #     type='Albumentation',
+    #     transforms=[
+    #         dict(type='Blur', p=0.1),
+    #         dict(type='MedianBlur', p=0.1),
+    #         dict(
+    #             type='CoarseDropout',
+    #             max_holes=1,
+    #             max_height=0.4,
+    #             max_width=0.4,
+    #             min_holes=1,
+    #             min_height=0.2,
+    #             min_width=0.2,
+    #             p=0.5),
+    #     ]),
     dict(type='GenerateTarget', encoder=codec),
     dict(type='PackPoseInputs')
 ]
