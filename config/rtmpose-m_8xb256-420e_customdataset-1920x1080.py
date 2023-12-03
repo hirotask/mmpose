@@ -236,7 +236,7 @@ custom_hooks = [
 
 # evaluators
 val_evaluator = [
-    dict(type='Accuracy', top_k=(1, 5)),
-    dict(type="AveragePrecision")
+    dict(type='mmpretrain.evaluation.Accuracy', top_k=(1, 5)),
+    dict(type="mmpretrain.evaluation.AveragePrecision")
 ]
 test_evaluator = val_evaluator
