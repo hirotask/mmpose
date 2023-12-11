@@ -31,7 +31,7 @@ def convert_keypoint_definition(keypoints, pose_det_dataset,
     if pose_lift_dataset == 'h36m':
         if pose_det_dataset in ['h36m']:
             keypoints_new = keypoints
-        elif pose_det_dataset in ['coco', 'posetrack18']:
+        elif pose_det_dataset in ['coco', 'posetrack18', 'custom_dataset']:
             # pelvis (root) is in the middle of l_hip and r_hip
             keypoints_new[:, 0] = (keypoints[:, 11] + keypoints[:, 12]) / 2
             # thorax is in the middle of l_shoulder and r_shoulder
