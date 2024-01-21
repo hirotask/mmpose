@@ -1,7 +1,7 @@
 _base_ = ['/mmpose/configs/_base_/default_runtime.py']
 
 # runtime
-train_cfg = dict(max_epochs=150, val_interval=10)
+train_cfg = dict(max_epochs=200, val_interval=20)
 
 # optimizer
 optim_wrapper = dict(optimizer=dict(
@@ -33,7 +33,7 @@ visualizer = dict(vis_backends=[
 ])
 
 # automatically scaling LR based on the actual training batch size
-auto_scale_lr = dict(base_batch_size=512)
+auto_scale_lr = dict(base_batch_size=64)
 
 # hooks
 # default_hooks = dict(checkpoint=dict(save_best='coco/AP', rule='greater'))
