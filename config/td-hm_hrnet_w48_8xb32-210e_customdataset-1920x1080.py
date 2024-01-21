@@ -6,7 +6,7 @@ train_cfg = dict(max_epochs=200, val_interval=20)
 # optimizer
 optim_wrapper = dict(optimizer=dict(
     type='Adam',
-    lr=5e-4,
+    lr=5e-1,
 ))
 
 # learning policy
